@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="userService" class="com.test.spring.service.impl.UserServiceImpl"/>
+
+    <bean id="orderService" class="com.test.spring.service.impl.OrderServiceImpl">
+        <!-- 通过name/value的方式给指定的属性注入指定的值，即调用相应属性的公有的set方法 -->
+        <property name="info" value="spring"/>
+        <!-- 如果属性是其他类，且也在配置文件中配置了bean，则可以通过name/ref的方式引用相应的bean -->
+        <!--
+            如果orderService中有一个userService的属性，则可以指定ref的值为userService的bean的id值来完成引用
+            <property name="userService" ref="userService"/>
+        -->
+    </bean>
+
+</beans>
